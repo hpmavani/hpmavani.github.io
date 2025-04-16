@@ -11,7 +11,7 @@ The Polyvore Dataset's training data is contained in "data/train_no_dup.json"; I
 
 Each outfit item has a name that contains a description of the item, a price, and the category ID which helps to map the item to a generic category of clothing or accessory type. For purpose of understanding the data, we will mainly look at these item name/descriptions and category IDs.
 
-<img src = "" style = "width: 75%">
+<img src = "https://github.com/hpmavani/hpmavani.github.io/blob/main/images/Json-Ex.png?raw=true" style = "width: 75%">
 
 For this type of data, pandas multi-indexing will help to maintain the hierarchical nature between outfits and outfit items: 
 
