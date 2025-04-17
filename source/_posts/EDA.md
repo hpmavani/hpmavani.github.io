@@ -81,6 +81,8 @@ Before we generate a word cloud, the outfit items must be preprocessed to remove
     plt.title('Item Names Word Cloud')
     plt.show()
 
+![image](https://github.com/user-attachments/assets/0fe029a0-a218-4ccf-bf40-016195222ad2)
+
 <br>
 
 At glance, the most common words are women, black, shoulder bag, white, and ankle boot. The most common colors seem to be black, white, brown, silver, and gold. This implies that the training data lacks data on more vibrant clothing.
@@ -184,7 +186,8 @@ A colors.txt file contains a list of colors that covers most of the colors found
 
 To visualize these relationships better, we can view them in a heatmap. The differing cell colors for each row indicate that there is a correlation between colors and their likelihood of co-occuring. 
 
-image here
+![image](https://github.com/user-attachments/assets/7eabe561-5b10-4d8b-9b3f-b812343cb741)
+
 
 `code`
 
@@ -203,7 +206,7 @@ image here
 
 We can also use an unsupervised technique called PCA to better understand how different colors cluster together when reduced to lower dimensions. PCA is a dimensionality reduction technique. Learn more here. 
 
-image here 
+![image](https://github.com/user-attachments/assets/e2466fa0-7921-4098-a364-7a2cbe630961)
 
 `code`
     from sklearn.decomposition import PCA
@@ -230,6 +233,8 @@ image here
 
 ### Fabric/Texture Analysis
 
+![image](https://github.com/user-attachments/assets/fe9e846a-fa7d-4bb2-9bb4-91888e6f45d9)
+
 `code`
     mat_fabrics = [i for i in cooc_mat.columns if i in fabrics]
     fabrics_mat = cooc_mat.loc[mat_fabrics, mat_fabrics]
@@ -238,6 +243,8 @@ image here
     sns.heatmap(normalized_fabrics_mat, annot=False, cmap="Blues", fmt=".2f", linewidths=0.5)
     plt.title("Fabric Co-Occurence Matrix Heatmap")
     plt.show()
+
+![image](https://github.com/user-attachments/assets/1ee30154-1aeb-4652-85ad-158d1a1f6835)
 
 `code`
 
@@ -262,7 +269,7 @@ image here
 
 ### Patterns Analysis 
 
-image here 
+![image](https://github.com/user-attachments/assets/cf012d7e-6cbd-4e3f-becd-af3319999a67)
 
 `code`
 
@@ -275,7 +282,7 @@ image here
     plt.xlabel("Items")
     plt.show()
 
-image here 
+![image](https://github.com/user-attachments/assets/f2adb674-8de4-4c2a-b8f6-7f71101ae72e)
 
 `code`
 
