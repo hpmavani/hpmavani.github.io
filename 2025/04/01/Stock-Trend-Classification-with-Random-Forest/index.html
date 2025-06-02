@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Stock Trend Classification with Random Forest | Hiya Mavani Programming Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="OverviewMany individuals aim to invest their money in stocks and take advantage of this quick but also risky way of making money. The movement of stock prices are impacted by many factors such as crow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Stock Trend Classification with Random Forest">
+<meta property="og:url" content="https://hpmavani.github.io/repository/2025/04/01/Stock-Trend-Classification-with-Random-Forest/index.html">
+<meta property="og:site_name" content="Hiya Mavani Programming Portfolio">
+<meta property="og:description" content="OverviewMany individuals aim to invest their money in stocks and take advantage of this quick but also risky way of making money. The movement of stock prices are impacted by many factors such as crow">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://hpmavani.github.io/repository/images/Decision_Tree.png">
+<meta property="og:image" content="https://github.com/user-attachments/assets/d6ffefaa-3aee-400f-a1d6-3cb0750a7f8a">
+<meta property="og:image" content="https://github.com/user-attachments/assets/c6ad290f-7ae4-4aa3-bd5f-32e6050c415f">
+<meta property="og:image" content="https://github.com/user-attachments/assets/8e575462-b063-45da-b699-f826593cef35">
+<meta property="og:image" content="https://github.com/user-attachments/assets/4c62e65e-50d9-4a07-bfcb-9eeee716e8a0">
+<meta property="og:image" content="https://github.com/user-attachments/assets/e5e90025-97e5-4146-89f9-f9b4784315e6">
+<meta property="og:image" content="https://github.com/user-attachments/assets/39691d77-789e-4822-acf4-4fd074375f97">
+<meta property="og:image" content="https://github.com/user-attachments/assets/9d8aae84-e9a6-41b7-b9b7-8f0f2aa84407">
+<meta property="og:image" content="https://github.com/user-attachments/assets/f35d4035-73fe-4661-a07a-792f8d1392ca">
+<meta property="og:image" content="https://github.com/user-attachments/assets/d1dfc06a-bcb8-46c3-a455-e17faa4ffea4">
+<meta property="og:image" content="https://github.com/user-attachments/assets/d41328fd-ce1c-48ce-a9c2-e0eed87a00d2">
+<meta property="og:image" content="https://github.com/user-attachments/assets/5a853d97-e6d6-404c-8584-5335ae0a9ed0">
+<meta property="article:published_time" content="2025-04-02T03:46:38.000Z">
+<meta property="article:modified_time" content="2025-04-15T23:03:45.669Z">
+<meta property="article:author" content="Hiya Mavani">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hpmavani.github.io/repository/images/Decision_Tree.png">
+  
+    <link rel="alternate" href="/repository/atom.xml" title="Hiya Mavani Programming Portfolio" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/repository/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/repository/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/repository/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/repository/" id="logo">Hiya Mavani Programming Portfolio</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/repository/" id="subtitle">CS &amp; DS Learning Journey</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/repository/">Home</a>
+        
+          <a class="main-nav-link" href="/repository/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/repository/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hpmavani.github.io/repository"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Stock-Trend-Classification-with-Random-Forest" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/repository/2025/04/01/Stock-Trend-Classification-with-Random-Forest/" class="article-date">
+  <time class="dt-published" datetime="2025-04-02T03:46:38.000Z" itemprop="datePublished">2025-04-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Stock Trend Classification with Random Forest
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>Many individuals aim to invest their money in stocks and take advantage of this quick but also risky way of making money. The movement of stock prices are impacted by many factors such as crowd sentiment, world news, and macroeconomic and microeconomic movement. Stock analysis is divided into two main categories: fundamental and technical analysis. Fundamental analysis focuses on broader analysis of a company’s financial records and market capitalization, while technical analysis focuses on creating an almost scientific method of stock prediction that’s based on patterns, trends, and momentum of a stock’s price. Machine learning techniques can be used in identifying relevant patterns within indicators and signals while filtering out noise. This kind of classification offers investors a buy or sell signal from the technical perspective of stock prediction, which they can verify with real-world sentiments to help make decisions about entry and exit points for investments. In this exploration, I will detail how Random Forest Classification can be applied to prediction of financial market conditions to make well-informed investment decisions.</p>
+<h2 id="Random-Forest-Classification"><a href="#Random-Forest-Classification" class="headerlink" title="Random Forest Classification"></a>Random Forest Classification</h2><h3 id="Why-Random-Forest-for-Stock-Trend-Classification"><a href="#Why-Random-Forest-for-Stock-Trend-Classification" class="headerlink" title="Why Random Forest for Stock Trend Classification?"></a>Why Random Forest for Stock Trend Classification?</h3><p>Random Forest is a machine learning technique that can be used for regression and classification tasks and is considered an extension of bagging. It incorporates an ensemble of decision trees that enables it to be accurate with large datasets and robust to overfitting.</p>
+<p>Random Forest Classification is an intuitive choice for stock bullish&#x2F;bearish analysis because the strategies that many traders use can be represented as a decision tree. When analysts make decisions about a security, they filter through different signals and indicators, making often binary decisions about which technical or market conditions indicate a bullish or bearish move for a stock, before coming to a final conclusion (buy or sell). For example, a trader might first look at the RSI indicator and see that it has dipped below the 30-line indicating that it is oversold. They may also see that the ADX is greater than 15 and DMI+ is above the DMI- line, indicating that there is an uptrend forming. After looking at several other indicators, they come to a conclusion of a certain confidence that there is a strong chance that the stock will go up. </p>
+<p>Decision trees capture these decision points in a quantitative way, determining the best way to split each decision. If we go one step further, we can imagine that evaluating the opinion of 100 traders each with their own conclusion would result in a more reliable estimation of the “correct” classification of a stock. The intent behind Random Forest is exactly this, where 100 different decision trees each produce an outcome and the final prediction is determined on a majority vote basis.</p>
+<p>Before discussing the process of using Random Forest for the purpose of Stock Trend Classification, it’s crucial to understand the basic functionality of the Random Forest algorithm. </p>
+<h3 id="Decision-Trees-Node-Purity-Tree-Independence"><a href="#Decision-Trees-Node-Purity-Tree-Independence" class="headerlink" title="Decision Trees (Node Purity &amp; Tree Independence)"></a>Decision Trees (Node Purity &amp; Tree Independence)</h3><p>Before, I briefly went over why Random Forest is an intuitive choice for stock trend classification using the following example:<br>“…a trader might first look at the RSI indicator and see that it has dipped below the 30-line indicating that it is oversold. They may also see that the ADX is greater than 15 and DMI+ is above the DMI- line, indicating that there is an uptrend forming. After looking at several other indicators, they come to a conclusion of a certain confidence that there is a strong chance that the stock will go up.”</p>
+<p>Notice how this line of reasoning can be easily fit into a (overly simplifed) decision tree. An even more complex line of reasoning can be represented this way.</p>
+<p><img src="/repository/images/Decision_Tree.png" alt="image"></p>
+<p>Additionally, the numerical splits 30, 15, and 0 in the image above are not arbitrarily assigned but are selected after maximizing the node purity at each split. Each point of decision in a decision tree aims to make every node as homogenous as possible (data points of mostly one label). Intuitively, it is deciding the factors that contribute to class labels being the most different. There are many algorithms to determine the best split, but in this article, I will focus on the Gini Index, which is also the algorithm used in the stock trend classification model. </p>
+<p><img src="https://github.com/user-attachments/assets/d6ffefaa-3aee-400f-a1d6-3cb0750a7f8a" alt="image"></p>
+<p>The Gini Index is a measure of impurity (non-homogeneity of nodes). It ranges from 0 to 1, with 0 representing a pure dataset and 1 representing an impure dataset. A decision tree aims to minimize the gini index at each decision point until it reaches its maximum depth. <br></p>
+<p><img src="https://github.com/user-attachments/assets/c6ad290f-7ae4-4aa3-bd5f-32e6050c415f" alt="image"></p>
+<p>p(j) represents the probability of classifying as a class j, so adding these probabilities and subtracting from 1 give the probability of misclassifying a datapoint when it is randomly assigned to a class. You can extend this to feature selection in a decision tree. If we take appropriate test values (a, b, c, …, z) for features X, Y, Z, we can calculate P(X &#x3D; a), P(X &#x3D; b), …, for each feature and calculate the Gini Impurity for each value. If feature Y has the smallest Gini Impurity, we know that under random selection of a datapoint, it has the smallest chance of misclassification, making it the best feature for the decision tree. </p>
+<p>Another important advantage of using Random Forest over just one decision tree besides having more than one “opinion” on a classification is how each tree is independent to one another because of feature subsetting and bagging. The decorrelation of trees is imperative in terms of avoid overfitting, so the model doesn’t memorize the noise in the data.</p>
+<h3 id="Feature-Subsetting"><a href="#Feature-Subsetting" class="headerlink" title="Feature Subsetting"></a>Feature Subsetting</h3><p>Each tree in the Random Forest gets the full set of features available, but if it just went by the best feature to split by at every node, we would end up with a forest filled with identical decision trees. This isn’t very useful! To address this, Random Forest takes the best feature among a random subset of features while splitting a node. For example, if we had features {RSI, MACD, ADX, Volume} and the sample size of the subset was 2, at split 1, we might get the subset {RSI, ADX} and determine that the best feature to split by is the RSI. At the subsequent split, we take another subset of the original set of features with replacement, {RSI, Volume} and repeat the process. The number of features sampled at each node is denoted by “m” and usually set to the square root of the total number of features n for classification tasks. However, this is a hyperparameter that can be tuned to see what best fits each model. Feature subsetting ensures that each tree is diverse and not dominated by a select few stronger predictors.</p>
+<h3 id="Bagging"><a href="#Bagging" class="headerlink" title="Bagging"></a>Bagging</h3><p>Bagging is used to further decorrelate each tree by taking a random bootstrapped sample of data points to train each tree. Bootstrapping means that the original set of data points is sampled with replacement so each tree may be trained on repeated points. Random Forest avoid overfitting through this means of shuffling the data. </p>
+<p>This raises an important question of how Random Forest can be used with time series data if the training process involves random sampling from the data. Wouldn’t the sequentiality of the data be lost? The answer is yes if you used random forest on raw time series data, sequentiality would be lost and look-ahead bias would be reflected in the results. This is why the original features of the dataset are engineered into lagged features. This way time dependence is encoded into each of the features and offsets the bootstrapping issue.</p>
+<h3 id="Disadvantages-of-Random-Forest"><a href="#Disadvantages-of-Random-Forest" class="headerlink" title="Disadvantages of Random Forest"></a>Disadvantages of Random Forest</h3><p>Random Forest is computationally expensive. The more estimators (number of trees), the longer it takes for the algorithm to run, especially if each tree maintains its max depth. This can potentially be avoided by reducing how deep each tree can go and adjusting the number of estimators, but there’s usually a tradeoff between computation and accuracy.</p>
+<p>Random Forest is also black box. It’s not feasible to see the different branches of each of 100s of decision trees, so a lot of this information isn’t shown in detail while working with the Random Forest model. This makes it harder to tune and adjust the model. However, feature importance scores give more insight into the features that contributed the most to the algorithm’s accuracy.</p>
+<p>Now that we’ve covered the basics of how Random Forest works, I can discuss the specifics of this implementation.</p>
+<h2 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h2><p>The dataset used to train and test the model was sourced from Python’s YFinance library with historical and most recent data on open, high, low, close, volume, and adjusted close prices for the S&amp;P500 index to capture patterns consistent with the top 500 traded stocks in the United States. This included 9909 rows and 7 columns. </p>
+<p>The training data is labeled with a 5-day lagged close price to simulate conditions for the moderately active home investor. If P(i) represents the most recent close on the i-th day then:</p>
+<p>P(i) - P([i-5]) &gt; 0 &#x3D;&gt; label -&gt; 1 indicates that the price has increased within the past 5 days. <br><br>P(i) - P([i-5]) &lt;&#x3D; 0 &#x3D;&gt; label -&gt; 0 indicates that the price has decreased within the past 5 days.</p>
+<p>Using this 5-day lag also helps the model filter out noise in the data that occurs from a 1-day lag close price.</p>
+<p>The engineered features in consideration are several different indicators such as RSI, MACD, ADX, SMAs, and Bollinger Bands. The main algorithm used was Random Forest, which is one of the industry standards for classification in terms of accuracy and prevention of overfitting. This project makes use of many different data science skills such as wrangling and pre-processing, feature engineering, data exploration through plots and correlation matrices, and model analysis using metrics such as accuracy, precision, specificity, sensitivity, ROC curve, f1-score, and K-Fold cross-validation. </p>
+<h2 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h2><h3 id="Simple-Moving-Average-Bollinger-Bands"><a href="#Simple-Moving-Average-Bollinger-Bands" class="headerlink" title="Simple Moving Average &amp; Bollinger Bands"></a>Simple Moving Average &amp; Bollinger Bands</h3><p>The Simple Moving Average (SMA) is calculated with the formula (n is typically 14): </p>
+<p><img src="https://github.com/user-attachments/assets/8e575462-b063-45da-b699-f826593cef35" alt="image"></p>
+<p>Where p(i) indicates the close-price on the i-th day of the n-day period.<br>This indicates the averaged price movement of a stock and it’s particularly useful as a measure of central tendency. For instance, with the SMA, a Bollinger band can be created to mark out the approximate trading range of a stock’s prices. By taking 2 standard deviations above and below the SMA, a region of price variety is created, and a stock price that travels outside of the region – above the upper boundary of the Bollinger band or below the lower boundary of the Bollinger band – indicates an unusual fluctuation that can signal that it’s due for a correction that brings the price back up or down. </p>
+<h3 id="RSI"><a href="#RSI" class="headerlink" title="RSI"></a>RSI</h3><p>The RSI or the relative strength index is a momentum indicator that is calculated with the formula: <br></p>
+<p><img src="https://github.com/user-attachments/assets/4c62e65e-50d9-4a07-bfcb-9eeee716e8a0" alt="image"></p>
+<p>The average gain and loss are calculated over an n-day period, where n is usually 14 days.<br>The concept behind the RSI is that every stock has a trading range, and when a stock price reaches the bottom of its range, there will be a support force that pushes the stock price back. Contrarily, when the stock price reaches the top of its range, there’s a resistance force that pulls the stock price back down. The resistance level and support level of a stock’s trading range are measured by an RSI index of either 70 and 30 or 80 and 20 respectively. If a stock price touches the 70&#x2F;80 mark, it indicates that the stock is overbought, and market forces will naturally bring the stock back down (trend reversal). If a stock price touches the 30&#x2F;20 mark, it indicates that the stock is oversold, and market forces will naturally bring the stock back up. In other words, the RSI measures the likelihood of a trend reversal in context of the stock’s current price momentum. </p>
+<p>Instead of using static values such as 70&#x2F;30 or 80&#x2F;20, using a z-score for the RSI with rolling means and rolling standard deviations creates dynamic markers for when a stock price is oversold&#x2F;overbought.</p>
+<h3 id="MACD"><a href="#MACD" class="headerlink" title="MACD"></a>MACD</h3><p>MACD or the Moving Average Convergence Divergence Oscillator is another popular indicator used in technical analysis of the stock market. Essentially, it measures the momentum (the speed and direction) of price movements. The MACD indicator has two parts: the MACD and the signal.<br>The MACD value is calculated by subtracting the 12-Period and 26-Period EMA (exponential moving average) of the historical close prices. The former is a short-term moving average, and the latter is a long-term moving average, so the difference of the two provides more insight on the direction of the market. The exponential moving average is like the simple moving average, but it places more weight on the more recent data points in the timeseries data. </p>
+<p>MACD &#x3D; EMA (12) – EMA (26)</p>
+<p><img src="https://github.com/user-attachments/assets/e5e90025-97e5-4146-89f9-f9b4784315e6" alt="image"></p>
+<p>The signal value is the 9-Period simple-moving average of the MACD line, and it’s used as a standard of comparison for the MACD. </p>
+<p>The main points of interest with the MACD indicator are crossover points, where the MACD and Signal lines cross over each other, as well as the magnitude of the momentum at those points. Generally, when the MACD line is above the Signal line, this is a buy signal, and when the MACD line is below the Signal line, this is a sell signal. </p>
+<h3 id="ADX-DMI-DMI-DI"><a href="#ADX-DMI-DMI-DI" class="headerlink" title="ADX, DMI+, DMI-, DI"></a>ADX, DMI+, DMI-, DI</h3><p>Some indicators that are used in conjunction with MACD are the average directional index (ADX), directional movement index plus and directional movement index minus. ADX identifies the existence of a stock trend, however it only provides the magnitude of the strength of a trend and not the direction. The directional movement (positive line DMI+) and directional movement (negative line DMI-) provide information about the direction of the trend. The overall directional index (DI) is calculated by taking the difference between the DMI+ and DMI-. When the DMI+ is above DMI-, the price is moving up. Conversely, when the DMI+ is below the DMI-, the price is moving down.<br>The ADX can be evaluated with these notions: </p>
+<ul>
+<li>0-20	Absent or Weak Trend</li>
+<li>25-50	Strong Trend</li>
+<li>50-75	Very Strong Trend</li>
+<li>75-100	Extremely Strong Trend</li>
+</ul>
+<p>For example, a positive directional index (DMI+ &gt; DMI-) and an ADX value of 45 indicates a strong uptrend. A negative directional index (DMI+ &lt; DMI-) and an ADX value of 15 indicates a weak downtrend.<br>In this stock trend classification, the ADX and directional index are represented in one feature by multiplying the ADX by -1 if the directional index is negative (the DMI+ &lt; DMI-); the ADX is kept positive if the directional index is positive (the DMI+ &gt; DMI-). </p>
+<h2 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h2><h3 id="Confusion-Matrix"><a href="#Confusion-Matrix" class="headerlink" title="Confusion Matrix"></a>Confusion Matrix</h3><p>Confusion matrices summarize the performance of a classification algorithm by showing the outcomes of predicting each class. In this situation, the positive class is an uptrend (indicating a stock is predicted to rise). The negative class is a downtrend (indicating a stock is predicted to fall). </p>
+<ul>
+<li><p>True Negatives &#x3D; This is the number of correct downtrend predictions, where the algorithm correctly identified that the stock price would fall. (741)</p>
+</li>
+<li><p>True Positives &#x3D; This is the number of correct uptrend predictions, where the algorithm correctly identified that the stock price would rise. (936)</p>
+</li>
+<li><p>False Positives &#x3D; This is the number of incorrect uptrend predictions. (112)</p>
+</li>
+<li><p>False Negatives &#x3D; This is the number of incorrect downtrend predictions. (184)</p>
+</li>
+</ul>
+<p><img src="https://github.com/user-attachments/assets/39691d77-789e-4822-acf4-4fd074375f97" alt="image"></p>
+<h3 id="Accuracy-F1-Score-Precision-and-Recall"><a href="#Accuracy-F1-Score-Precision-and-Recall" class="headerlink" title="Accuracy, F1-Score, Precision, and Recall"></a>Accuracy, F1-Score, Precision, and Recall</h3><p>The results of the Random Forest model’s performance were evaluated using accuracy, f1-score, precision, and recall. These are directly calculated from the outcomes of the confusion matrix above.</p>
+<p><img src="https://github.com/user-attachments/assets/9d8aae84-e9a6-41b7-b9b7-8f0f2aa84407" alt="image"></p>
+<h3 id="Cross-Validation-and-Hyperparameter-Tuning"><a href="#Cross-Validation-and-Hyperparameter-Tuning" class="headerlink" title="Cross-Validation and Hyperparameter Tuning"></a>Cross-Validation and Hyperparameter Tuning</h3><p>The cv (Cross-Validation) score is also considered, which indicates a mean accuracy of 86.4% indicating that there likely isn’t much overfitting. However, we can try to increase this score further through hyperparameter tuning using gridsearchCV, specifically with the number of estimators (number of trees) and the maximum amount of features to select from at each split. </p>
+<p>For the number of estimators, the best number of estimators is 880 estimators. However, this specific finding doesn’t change the cv score by a signficant amount. </p>
+<p><img src="https://github.com/user-attachments/assets/f35d4035-73fe-4661-a07a-792f8d1392ca" alt="image"></p>
+<p>For the number of max features, the best parameter is found to be 8 features. This means that at every split, a subset of 8 features should be taken. </p>
+<p><img src="https://github.com/user-attachments/assets/d1dfc06a-bcb8-46c3-a455-e17faa4ffea4" alt="image"></p>
+<p>Re-fitting the model with the tuned parameters (880 estimators and max features of 8) gives a new cv score of 86.7%, a 0.3% from the original cv score of 86.4. This different isn’t very significant, so the time trade-off that would be required for training the random forest with 880 estimators isn’t worth the small increase in cv. </p>
+<h3 id="Feature-Importances"><a href="#Feature-Importances" class="headerlink" title="Feature Importances"></a>Feature Importances</h3><p>The feature importances reveal that RSI Z-Score, Z-Score, RSI, and ADX contributed the most to the model’s accuracy, while Bollinger Bands lower bound, SMA, and Bollinger Bands upper bound contributed the least. This also means that the most prominent features reduced the Gini Index (promoted node purity) relatively more than the other features. </p>
+<p align="middle">
+  <img src="https://github.com/user-attachments/assets/d41328fd-ce1c-48ce-a9c2-e0eed87a00d2">
+  <img src="https://github.com/user-attachments/assets/5a853d97-e6d6-404c-8584-5335ae0a9ed0" width="600px">
+</p>
+
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>The overall performance of the Random Forest Classification is ideal with a cv score of about 82.5%. Compared to other algorithmic models such as Support Vector Machines that can reach accuracies of up to 90%, Random Forest performs adequately well considering that it’s highly interpetable and takes less time to train. </p>
+<p>As the model was trained on S&amp;P500 data, the feature importance reflects that RSI and ADX features are highly indicative of stock market patterns and trends when generalized to a diverse range of stocks from different sectors. This makes intuitive sense because RSI is primarily a momentum indicator, providing information on the direction and extent of price movement, and ADX provides information on the quantified strength of a trend in any direction. In practice, these two indicators are often used in conjunction to verify potentially true signals or identify false signals. However, it is surprising that MACD features didn’t contribute more to the overall accuracy of the model considering its popularity as a technical indicator. With even more nuanced feature engineering, these results could definitely evolve and better the model’s performance.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hpmavani.github.io/repository/2025/04/01/Stock-Trend-Classification-with-Random-Forest/" data-id="cmbfohd4k0001s8lrb7lyfns6" data-title="Stock Trend Classification with Random Forest" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/repository/2025/04/15/Outfit-Styling-with-Neural-Networks/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Outfit Styling with Neural Networks
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/repository/archives/2025/04/">April 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/repository/2025/04/16/EDA/">EDA</a>
+          </li>
+        
+          <li>
+            <a href="/repository/2025/04/15/Outfit-Styling-with-Neural-Networks/">Outfit Styling with Neural Networks</a>
+          </li>
+        
+          <li>
+            <a href="/repository/2025/04/01/Stock-Trend-Classification-with-Random-Forest/">Stock Trend Classification with Random Forest</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Hiya Mavani<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/repository/" class="mobile-nav-link">Home</a>
+  
+    <a href="/repository/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/repository/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/repository/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/repository/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

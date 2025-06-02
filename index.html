@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hiya Mavani Programming Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Several coding projects ranging from ML applications to web development and mobile application development.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hiya Mavani Programming Portfolio">
+<meta property="og:url" content="https://hpmavani.github.io/repository/index.html">
+<meta property="og:site_name" content="Hiya Mavani Programming Portfolio">
+<meta property="og:description" content="Several coding projects ranging from ML applications to web development and mobile application development.">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Hiya Mavani">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/repository/atom.xml" title="Hiya Mavani Programming Portfolio" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/repository/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/repository/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/repository/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/repository/" id="logo">Hiya Mavani Programming Portfolio</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/repository/" id="subtitle">CS &amp; DS Learning Journey</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/repository/">Home</a>
+        
+          <a class="main-nav-link" href="/repository/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/repository/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hpmavani.github.io/repository"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-EDA" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/repository/2025/04/16/EDA/" class="article-date">
+  <time class="dt-published" datetime="2025-04-16T04:21:38.000Z" itemprop="datePublished">2025-04-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/repository/2025/04/16/EDA/">EDA</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Polyvore-Dataset"><a href="#Polyvore-Dataset" class="headerlink" title="Polyvore Dataset"></a>Polyvore Dataset</h2><p>The Polyvore Dataset’s training data is contained in “data&#x2F;train_no_dup.json”; It is a json file that contains x outfits with each outfit containing about 7-8 outfit items. </p>
+<p>Each outfit item has a name that contains a description of the item, a price, and the category ID which helps to map the item to a generic category of clothing or accessory type. For purpose of understanding the data, we will mainly look at these item name&#x2F;descriptions and category IDs.</p>
+<img src = "https://github.com/hpmavani/hpmavani.github.io/blob/main/images/Json-Ex.png?raw=true" style = "width: 75%">
+
+<p>For this type of data, pandas multi-indexing will help to maintain the hierarchical nature between outfits and outfit items: </p>
+<p><code>code</code> </p>
+<pre><code>import pandas as pd
+import numpy as np
+import json
+pd.options.mode.chained_assignment = None
+with open(&#39;data/train_no_dup.json&#39;) as file: 
+    data = json.load(file)
+
+iterables = []
+item_prices = []
+item_names = [] 
+item_catids = []
+
+for index, d in enumerate(data): 
+    items = [i for i in d[&quot;items&quot;]]
+    
+    for i_index, i in enumerate(items): 
+        iterables.append([index, i_index])
+        item_names.append(i[&quot;name&quot;])
+        item_prices.append(i[&quot;price&quot;])
+        item_catids.append(i[&quot;categoryid&quot;])
+
+multindex = pd.DataFrame(iterables, columns=[&quot;outfit_index&quot;, &quot;item_index&quot;])
+index = pd.MultiIndex.from_frame(multindex)
+
+df = pd.DataFrame(&#123;&quot;item_name&quot;: item_names, &quot;item_price&quot;: item_prices, &quot;item_catid&quot;: item_catids&#125;, index=index)
+
+df.head(25)
+</code></pre>
+<img src = "https://github.com/hpmavani/hpmavani.github.io/blob/main/images/df1.png?raw=true" style = "width: 75%">
+
+<h2 id="Generating-a-Word-Cloud-of-Outfit-Items"><a href="#Generating-a-Word-Cloud-of-Outfit-Items" class="headerlink" title="Generating a Word Cloud of Outfit Items"></a>Generating a Word Cloud of Outfit Items</h2><p>A word cloud is a tool that gives a qualitative idea of the most frequent words found in the data. </p>
+<p>Before we generate a word cloud, the outfit items must be preprocessed to remove any empty strings or irrelevant words in the item descriptions. All words are made lowercase and punctuation is also removed. </p>
+<p><code>code</code></p>
+<pre><code>import re 
+from wordcloud import STOPWORDS
+stopwords = set(STOPWORDS)
+text = &#39; &#39;.join(df[&#39;item_name&#39;].astype(str).tolist())
+text = re.sub(r&quot;[^A-Za-z\s]&quot;, &#39;&#39;, text)
+text = text.lower() 
+text = &#39; &#39;.join(word for word in text.split() if word not in stopwords)
+df.replace([&quot;&quot;, &quot; &quot;, &quot;...&quot;, &quot;Polyvore&quot;, &#39;&#39;], np.nan, inplace=True)
+df[&quot;item_name&quot;] = df[&quot;item_name&quot;].str.lower()
+df[&quot;item_name&quot;] = df[&quot;item_name&quot;].str.replace(&quot;t shirt&quot;, &quot;t-shirt&quot;)
+df[&quot;item_name&quot;] = df[&quot;item_name&quot;].str.replace(r&quot;[^A-Za-z\s\-]&quot;, &quot;&quot;, regex=True)
+df = df.dropna()
+df[df[&quot;item_name&quot;] == &quot;&quot;][&quot;item_name&quot;] = np.nan
+</code></pre>
+<p><code>code</code></p>
+<pre><code>from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+
+wordcloud = WordCloud(width=800, height=400, background_color=&#39;white&#39;).generate(text)
+
+plt.figure(figsize=(10, 5))
+plt.imshow(wordcloud, interpolation=&#39;bilinear&#39;)
+plt.axis(&#39;off&#39;)
+plt.title(&#39;Item Names Word Cloud&#39;)
+plt.show()
+</code></pre>
+<p><img src="https://github.com/user-attachments/assets/0fe029a0-a218-4ccf-bf40-016195222ad2" alt="image"></p>
+<br>
+
+<p>At glance, the most common words are women, black, shoulder bag, white, and ankle boot. The most common colors seem to be black, white, brown, silver, and gold. This implies that the training data lacks data on more vibrant clothing.</p>
+<p>There’s also a lot of brand names: dolce gabbana, micheal kors, saint laurent, miu miu, and jimmy choo. This reflects that the Polyvore dataset consists of higher-end products. </p>
+<h2 id="Distribution-of-Items-Across-CategoryID"><a href="#Distribution-of-Items-Across-CategoryID" class="headerlink" title="Distribution of Items Across CategoryID"></a>Distribution of Items Across CategoryID</h2><h2 id="Co-Occurence-Matrix-Analysis"><a href="#Co-Occurence-Matrix-Analysis" class="headerlink" title="Co-Occurence Matrix Analysis"></a>Co-Occurence Matrix Analysis</h2><p>A co-occurence matrix is basically a frequency table, but the rows and columns contain the same features. In NLP, this matrix is used to calculate how often pairs of words show up together, which offer insight into the similarity between words. </p>
+<p>For this specific application, we use co-occurence matrices to see how often two words show up together in an outfit. For example, how often do we see the word “black” and “gold” in one outfit? This could indicate that since black and gold are compatible colors, they show up together often. </p>
+<p>This helps to gain insight on word relationships across outfits, and we will analyze this more closely in terms of colors, fabrics, and patterns that co-occur in the training data. </p>
+<p>To accomplish this, we will follow these steps: </p>
+<ol>
+<li>Randomly sample n outfits from the training dataset</li>
+<li>Create a vocab set that contains all words found in clothing item names.</li>
+<li>Find the cartesian product of the outfit items</li>
+<li>Loop through the pairs and increment the location (i, j) and (j, i) respective to the pair of items by 1.</li>
+</ol>
+<p>Once we have a general co-occurence matrix of the entire vocab set, we can subset this dataframe to find specific patterns in terms of colors, fabrics, and patterns.</p>
+<p>For this, I have created 3 text files with an exhaustive list of colors, fabrics, and patterns which can be used filter the dataset and generate new co-occurence matrices. </p>
+<p>The code for each of these parts is below: </p>
+<h3 id="1-Random-Sampling-of-Outfits"><a href="#1-Random-Sampling-of-Outfits" class="headerlink" title="1. Random Sampling of Outfits"></a>1. Random Sampling of Outfits</h3><p><code>code</code></p>
+<pre><code>import random 
+random.seed(42)
+num_outfits = 17315
+random_ints = random.sample(range(num_outfits), k = 100)
+outfit = df.loc[random_ints]
+</code></pre>
+<h3 id="2-Vocabulary-Set"><a href="#2-Vocabulary-Set" class="headerlink" title="2. Vocabulary Set"></a>2. Vocabulary Set</h3><p><code>code</code></p>
+<pre><code>import itertools
+outfit_vocab = list(outfit[&quot;tokenized_item&quot;])
+items_list = set(sorted(list(itertools.chain(*outfit_vocab))))
+</code></pre>
+<h3 id="3-Cartesian-Product-of-Outfit-Items"><a href="#3-Cartesian-Product-of-Outfit-Items" class="headerlink" title="3. Cartesian Product of Outfit Items"></a>3. Cartesian Product of Outfit Items</h3><p><code>code</code></p>
+<pre><code># Create a list of lists where each nested list contains combination of clothing items
+# e.g., [[&#39;victoria&#39;, &#39;velvet&#39;, &#39;gown&#39;], [&#39;rosie&#39;, &#39;long&#39;, &#39;a-line&#39;, &#39;coat&#39;]]
+
+item_product = []
+for i in outfit_vocab: 
+    for j in outfit_vocab: 
+        if i != j: 
+            item_product.append([i, j])
+
+# We want to further expand this to pairs of words in those item descriptions
+
+pairs = []
+
+for item_combo in item_product: 
+    for element in itertools.product(*item_combo): 
+        pairs.append(element)
+
+# &quot;Pairs&quot; will have tuples that look like this: 
+# [(&#39;victoria&#39;, &#39;rosie&#39;),
+    (&#39;victoria&#39;, &#39;long&#39;),
+    (&#39;victoria&#39;, &#39;a-line&#39;),
+    (&#39;victoria&#39;, &#39;coat&#39;),
+    (&#39;velvet&#39;, &#39;rosie&#39;),
+    (&#39;velvet&#39;, &#39;long&#39;),
+    (&#39;velvet&#39;, &#39;a-line&#39;),
+    (&#39;velvet&#39;, &#39;coat&#39;),
+    (&#39;gown&#39;, &#39;rosie&#39;),
+    (&#39;gown&#39;, &#39;long&#39;),
+    (&#39;gown&#39;, &#39;a-line&#39;),
+    (&#39;gown&#39;, &#39;coat&#39;)...]
+</code></pre>
+<h3 id="4-Creating-the-co-occurrence-matrix-by-incrementing-frequencies"><a href="#4-Creating-the-co-occurrence-matrix-by-incrementing-frequencies" class="headerlink" title="4. Creating the co-occurrence matrix by incrementing frequencies"></a>4. Creating the co-occurrence matrix by incrementing frequencies</h3><p><code>code</code></p>
+<pre><code># Create a mapping from items to a matrix index
+item_indices = &#123;item: i for i, item in enumerate(items_list)&#125;
+
+# initialize matrix
+matrix = np.zeros((len(items_list), len(items_list)), dtype=int)
+
+for item1, item2 in pairs: 
+    matrix[item_indices[item1], item_indices[item2]] += 1
+    matrix[item_indices[item2], item_indices[item1]] += 1
+
+cooc_mat = pd.DataFrame(matrix)
+</code></pre>
+<p>After we have this co-occurence matrix of item-pair frequencies, we can extract the rows and columns that are colors, fabrics, and patterns to see the relationships between these categories – how often two colors, fabrics, or patterns occur together in an outfit.</p>
+<h3 id="Color-Analysis"><a href="#Color-Analysis" class="headerlink" title="Color Analysis"></a>Color Analysis</h3><p>A colors.txt file contains a list of colors that covers most of the colors found in the data set. We read this file into a python set and then loop through the cooc_mat columns, subsetting the columns that occur in the colors set. This new matrix is then normalized by dividing each cell by a row total. These normalized values give better insight into the distribution of the occurences of other colors given that row’s color. This is the basic idea of a frequency table and builds off of the idea of conditional probability. </p>
+<p>To visualize these relationships better, we can view them in a heatmap. The differing cell colors for each row indicate that there is a correlation between colors and their likelihood of co-occuring. </p>
+<p><img src="https://github.com/user-attachments/assets/7eabe561-5b10-4d8b-9b3f-b812343cb741" alt="image"></p>
+<p><code>code</code></p>
+<pre><code>import seaborn as sns
+import matplotlib.pyplot as plt
+
+mat_colors = [i for i in cooc_mat.columns if i in colors]
+colors_mat = cooc_mat.loc[mat_colors,mat_colors]
+normalized_colors_mat = colors_mat.div(colors_mat.sum(axis=1), axis=0)
+
+
+plt.figure(figsize = (10, 5))
+sns.heatmap(normalized_colors_mat, annot=False, cmap=&quot;Blues&quot;, fmt=&quot;.2f&quot;, linewidths=0.5)
+plt.title(&quot;Color Co-Occurence Matrix Heatmap&quot;)
+plt.show()
+</code></pre>
+<p>We can also use an unsupervised technique called PCA to better understand how different colors cluster together when reduced to lower dimensions. PCA is a dimensionality reduction technique. Learn more here. </p>
+<p><img src="https://github.com/user-attachments/assets/e2466fa0-7921-4098-a364-7a2cbe630961" alt="image"></p>
+<p><code>code</code><br>    from sklearn.decomposition import PCA<br>    import matplotlib.pyplot as plt</p>
+<pre><code>pca = PCA(n_components=2)
+reduced = pca.fit_transform(normalized_colors_mat)  # Same length as your data
+colors_legend = plt.cm.tab10(np.linspace(0, 1, len(mat_colors)))
+
+# Create a color map for categories
+cat_color_map = &#123;cat: color for cat, color in zip(mat_colors, colors_legend)&#125;
+point_colors = [cat_color_map[cat] for cat in mat_colors]
+
+plt.scatter(reduced[:, 0], reduced[:, 1], c=point_colors)
+
+for cat in mat_colors: 
+    plt.scatter([], [], c=cat_color_map[cat], label=cat)
+    
+plt.legend(title = &quot;Colors&quot;, fontsize = &quot;x-small&quot;, loc = &quot;lower left&quot;)
+plt.xlabel(&quot;PCA 1&quot;)
+plt.ylabel(&quot;PCA 2&quot;)
+plt.title(&quot;PCA of Colors&quot;)
+plt.show()
+</code></pre>
+<h3 id="Fabric-Texture-Analysis"><a href="#Fabric-Texture-Analysis" class="headerlink" title="Fabric&#x2F;Texture Analysis"></a>Fabric&#x2F;Texture Analysis</h3><p><img src="https://github.com/user-attachments/assets/fe9e846a-fa7d-4bb2-9bb4-91888e6f45d9" alt="image"></p>
+<p><code>code</code><br>    mat_fabrics &#x3D; [i for i in cooc_mat.columns if i in fabrics]<br>    fabrics_mat &#x3D; cooc_mat.loc[mat_fabrics, mat_fabrics]<br>    normalized_fabrics_mat &#x3D; fabrics_mat.div(fabrics_mat.sum(axis&#x3D;1), axis&#x3D;0)<br>    plt.figure(figsize &#x3D; (10, 5))<br>    sns.heatmap(normalized_fabrics_mat, annot&#x3D;False, cmap&#x3D;”Blues”, fmt&#x3D;”.2f”, linewidths&#x3D;0.5)<br>    plt.title(“Fabric Co-Occurence Matrix Heatmap”)<br>    plt.show()</p>
+<p><img src="https://github.com/user-attachments/assets/1ee30154-1aeb-4652-85ad-158d1a1f6835" alt="image"></p>
+<p><code>code</code></p>
+<pre><code>pca = PCA(n_components=2)
+reduced = pca.fit_transform(normalized_fabrics_mat)  # Same length as your data
+colors_legend = plt.cm.tab10(np.linspace(0, 1, len(mat_fabrics)))
+
+# Create a color map for categories
+cat_color_map = &#123;cat: color for cat, color in zip(mat_fabrics, colors_legend)&#125;
+point_colors = [cat_color_map[cat] for cat in mat_fabrics]
+
+plt.scatter(reduced[:, 0], reduced[:, 1], c=point_colors)
+
+for cat in mat_fabrics: 
+    plt.scatter([], [], c=cat_color_map[cat], label=cat)
+    
+plt.legend(title = &quot;Fabrics&quot;, fontsize = &quot;x-small&quot;, loc = &quot;lower left&quot;)
+plt.xlabel(&quot;PCA 1&quot;)
+plt.ylabel(&quot;PCA 2&quot;)
+plt.title(&quot;PCA of Fabrics&quot;)
+plt.show()
+</code></pre>
+<h3 id="Patterns-Analysis"><a href="#Patterns-Analysis" class="headerlink" title="Patterns Analysis"></a>Patterns Analysis</h3><p><img src="https://github.com/user-attachments/assets/cf012d7e-6cbd-4e3f-becd-af3319999a67" alt="image"></p>
+<p><code>code</code></p>
+<pre><code>mat_patterns = [i for i in cooc_mat.columns if i in patterns]
+patterns_mat = cooc_mat.loc[mat_patterns, mat_patterns]
+normalized_patterns_mat = patterns_mat.div(patterns_mat.sum(axis=1), axis=0)
+plt.figure(figsize = (10, 5))
+sns.heatmap(normalized_patterns_mat, annot=False, cmap=&quot;Blues&quot;, fmt=&quot;.2f&quot;, linewidths=0.5)
+plt.title(&quot;Pattern Co-Occurence Matrix Heatmap&quot;)
+plt.xlabel(&quot;Items&quot;)
+plt.show()
+</code></pre>
+<p><img src="https://github.com/user-attachments/assets/f2adb674-8de4-4c2a-b8f6-7f71101ae72e" alt="image"></p>
+<p><code>code</code></p>
+<pre><code>pca = PCA(n_components=2)
+reduced = pca.fit_transform(normalized_patterns_mat)  # Same length as your data
+colors_legend = plt.cm.tab10(np.linspace(0, 1, len(mat_patterns)))
+
+# Create a color map for categories
+cat_color_map = &#123;cat: color for cat, color in zip(mat_patterns, colors_legend)&#125;
+point_colors = [cat_color_map[cat] for cat in mat_patterns]
+
+plt.scatter(reduced[:, 0], reduced[:, 1], c=point_colors)
+
+for cat in mat_patterns: 
+    plt.scatter([], [], c=cat_color_map[cat], label=cat)
+    
+plt.legend(title = &quot;Patterns&quot;, fontsize = &quot;x-small&quot;, loc = &quot;lower left&quot;)
+plt.xlabel(&quot;PCA 1&quot;)
+plt.ylabel(&quot;PCA 2&quot;)
+plt.title(&quot;PCA of patterns matrix&quot;)
+plt.show()
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hpmavani.github.io/repository/2025/04/16/EDA/" data-id="cmbfohd4h0000s8lr2ljbfwa2" data-title="EDA" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Outfit-Styling-with-Neural-Networks" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/repository/2025/04/15/Outfit-Styling-with-Neural-Networks/" class="article-date">
+  <time class="dt-published" datetime="2025-04-16T01:57:07.000Z" itemprop="datePublished">2025-04-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/repository/2025/04/15/Outfit-Styling-with-Neural-Networks/">Outfit Styling with Neural Networks</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Project-Motivation"><a href="#Project-Motivation" class="headerlink" title="Project Motivation"></a>Project Motivation</h2><p>Outfit styling, although a creative process, has many different rules and patterns that can be automated using a neural network. Generating a compatible outfit can be boiled down to a next-token prediction task, where given a set of some clothing items, we can ask, “What’s the next clothing item that will maximize this outfit’s compatability?”</p>
+<p><img src="https://github.com/hpmavani/hpmavani.github.io/blob/main/images/next-token-flow.png?raw=true" style = "width:75%"></img></p>
+<p>The ideal vision for this project is that the model is able to pick up on the subtleties of color, pattern, and texture combinations as well as other implicit features that determine outfit compatability and use this to predict the next “token.” </p>
+<p>To achieve this, the model will be fit with a training dataset of about 18,000 compatible outfits with over 100,000 clothing items. Each clothing item will have a textual description, a category ID, and price. However, for simplicity, we will only consider the textual description. Additionally, category ID refers to the general category of items the clothing item belongs to ,e.g., shoes, handbags, t-shirts. This information will only be used for analyzing the distribution of items in the dataset and primary data visualization.</p>
+<h2 id="Tokens"><a href="#Tokens" class="headerlink" title="Tokens?"></a>Tokens?</h2><p>With the diverse array of clothing item descriptions, we can make a massive vocabulary for our model with tokenized clothing items. However, if we truly want token -&gt; clothing description, the tokenizing and embedding must be done from scratch and we can’t take advantage of in-built embedding models within pre-trained models such as GPT-2. This approach would be like training a transformer model from scratch which provides a lot of flexibility but is also tasking in terms of compute. </p>
+<p>Because of these drawbacks, I will initially use GPT-2 as a base model for this task. GPT-2 is a natural language processing model freely available through HuggingFace’s Transformers library. GPT-2 has already been fine-tuned for next-token prediction tasks and has its own built-in tokenization and embedding algorithm. To fit GPT-2 to the corpus of outfits, one glaring issue is that GPT-2’s definition of a token is drastically different than our definition of a token, which is actually a group of tokens according to GPT-2. </p>
+<p>For example, when we have a description like “topshop moto joni high rise skinny jeans”, GPT-2 sees this as:</p>
+<blockquote>
+<p>“topshop &lt;sep&gt; moto &lt;sep&gt; joni &lt;sep&gt; high &lt;sep&gt; rise &lt;sep&gt; skinny &lt;sep&gt; jeans.”</p>
+</blockquote>
+<p>If we asked GPT-2 to predict the next clothing item, it will process 7 different tokens and give an embedding to each without capturing the semantic information of these words being part of a phrase. Additionally, it won’t learn that its outputs must be sequences of tokens that resemble a clothing item. This is not what we want!</p>
+<p>Essentially, we want to perform a next-phrase prediction, so how can we accomplish this with a model that is made for next-token prediction?</p>
+<p>Simply, we will have a preprocessing layer before we even fit the training data to GPT-2, where we will place a delimiter between clothing item descriptions. If we have “topshop moto joni high rise skinny jeans” and “joy denim jacket”, this will be fed into the tokenizer as: </p>
+<blockquote>
+<p>“topshop moto joni high rise skinny jeans &lt;sep&gt; joy denim jacket”</p>
+</blockquote>
+<p>At first, the model will treat &lt;sep&gt; as just another token, but with more repetitions, it will learn that &lt;sep&gt; has a special meaning as a boundary token.</p>
+<p><img src = "https://github.com/hpmavani/hpmavani.github.io/blob/main/images/bert-tokenization.png?raw=true" style = "width: 75%"></img></p>
+<p>The idea of having the model learn phrase boundaries using a separation token is used within the paper “BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding”; Figure 2 of this paper is shown above. </p>
+<blockquote>
+<p>“Sentence pairs are packed together into a single sequence. We differentiate the sentences in two ways. First, we separate them with a special token ([SEP]). Second, we add a learned embedding to every token indicating whether it belongs to sentence A or sentence B.”</p>
+</blockquote>
+<p>Instead of sentence pairs, this specific task will include clothing items represented as phrases or a sequence of tokens. GPT-2’s tokenizer doesn’t use segment embeddings so we can omit the second part involving embeddings that distinguish different clothing items.</p>
+<h2 id="Course-of-Action"><a href="#Course-of-Action" class="headerlink" title="Course of Action"></a>Course of Action</h2><p>Over the course of several blog posts, I will detail the process of training a model that is capable of generating compatible outfits. This blog series will cover many different aspects of the ML pipeline such as: </p>
+<ol>
+<li>Exploratory Data Analysis (EDA)<ul>
+<li>Using techniques like co-occurence matrices and PCA to identify patterns in the data as well as visualizing these patterns using scatter plots and word clouds.</li>
+</ul>
+</li>
+<li>Data Preprocessing <ul>
+<li>Cleaning textual data by removing punctuation and stop words (irrelevant words)</li>
+<li>Removing null values</li>
+<li>Creating test and validation sets that fit this task. </li>
+<li>Additional preprocessing of clothing descriptions for GPT-2 tokenization.</li>
+</ul>
+</li>
+<li>Model training<ul>
+<li>Fitting the training data to a base model</li>
+<li>Evaluating base-line performance</li>
+</ul>
+</li>
+<li>Hypertuning &amp; Feature Engineering <ul>
+<li>Revisiting the training data if there is “bad data”</li>
+<li>Engineering new features to improve the model’s performance</li>
+<li>Tuning parameters such as learning rates, batch size, and training epochs</li>
+<li>Applying regularization techniques</li>
+</ul>
+</li>
+<li>Final Evaluation on Test Set<ul>
+<li>Analysis of error and results through accuracy metrics and qualitative means</li>
+<li>Future improvements – would image inputs improve the model?</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hpmavani.github.io/repository/2025/04/15/Outfit-Styling-with-Neural-Networks/" data-id="cmbfohd4p0003s8lr2j7zcdv7" data-title="Outfit Styling with Neural Networks" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Stock-Trend-Classification-with-Random-Forest" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/repository/2025/04/01/Stock-Trend-Classification-with-Random-Forest/" class="article-date">
+  <time class="dt-published" datetime="2025-04-02T03:46:38.000Z" itemprop="datePublished">2025-04-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/repository/2025/04/01/Stock-Trend-Classification-with-Random-Forest/">Stock Trend Classification with Random Forest</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>Many individuals aim to invest their money in stocks and take advantage of this quick but also risky way of making money. The movement of stock prices are impacted by many factors such as crowd sentiment, world news, and macroeconomic and microeconomic movement. Stock analysis is divided into two main categories: fundamental and technical analysis. Fundamental analysis focuses on broader analysis of a company’s financial records and market capitalization, while technical analysis focuses on creating an almost scientific method of stock prediction that’s based on patterns, trends, and momentum of a stock’s price. Machine learning techniques can be used in identifying relevant patterns within indicators and signals while filtering out noise. This kind of classification offers investors a buy or sell signal from the technical perspective of stock prediction, which they can verify with real-world sentiments to help make decisions about entry and exit points for investments. In this exploration, I will detail how Random Forest Classification can be applied to prediction of financial market conditions to make well-informed investment decisions.</p>
+<h2 id="Random-Forest-Classification"><a href="#Random-Forest-Classification" class="headerlink" title="Random Forest Classification"></a>Random Forest Classification</h2><h3 id="Why-Random-Forest-for-Stock-Trend-Classification"><a href="#Why-Random-Forest-for-Stock-Trend-Classification" class="headerlink" title="Why Random Forest for Stock Trend Classification?"></a>Why Random Forest for Stock Trend Classification?</h3><p>Random Forest is a machine learning technique that can be used for regression and classification tasks and is considered an extension of bagging. It incorporates an ensemble of decision trees that enables it to be accurate with large datasets and robust to overfitting.</p>
+<p>Random Forest Classification is an intuitive choice for stock bullish&#x2F;bearish analysis because the strategies that many traders use can be represented as a decision tree. When analysts make decisions about a security, they filter through different signals and indicators, making often binary decisions about which technical or market conditions indicate a bullish or bearish move for a stock, before coming to a final conclusion (buy or sell). For example, a trader might first look at the RSI indicator and see that it has dipped below the 30-line indicating that it is oversold. They may also see that the ADX is greater than 15 and DMI+ is above the DMI- line, indicating that there is an uptrend forming. After looking at several other indicators, they come to a conclusion of a certain confidence that there is a strong chance that the stock will go up. </p>
+<p>Decision trees capture these decision points in a quantitative way, determining the best way to split each decision. If we go one step further, we can imagine that evaluating the opinion of 100 traders each with their own conclusion would result in a more reliable estimation of the “correct” classification of a stock. The intent behind Random Forest is exactly this, where 100 different decision trees each produce an outcome and the final prediction is determined on a majority vote basis.</p>
+<p>Before discussing the process of using Random Forest for the purpose of Stock Trend Classification, it’s crucial to understand the basic functionality of the Random Forest algorithm. </p>
+<h3 id="Decision-Trees-Node-Purity-Tree-Independence"><a href="#Decision-Trees-Node-Purity-Tree-Independence" class="headerlink" title="Decision Trees (Node Purity &amp; Tree Independence)"></a>Decision Trees (Node Purity &amp; Tree Independence)</h3><p>Before, I briefly went over why Random Forest is an intuitive choice for stock trend classification using the following example:<br>“…a trader might first look at the RSI indicator and see that it has dipped below the 30-line indicating that it is oversold. They may also see that the ADX is greater than 15 and DMI+ is above the DMI- line, indicating that there is an uptrend forming. After looking at several other indicators, they come to a conclusion of a certain confidence that there is a strong chance that the stock will go up.”</p>
+<p>Notice how this line of reasoning can be easily fit into a (overly simplifed) decision tree. An even more complex line of reasoning can be represented this way.</p>
+<p><img src="/repository/images/Decision_Tree.png" alt="image"></p>
+<p>Additionally, the numerical splits 30, 15, and 0 in the image above are not arbitrarily assigned but are selected after maximizing the node purity at each split. Each point of decision in a decision tree aims to make every node as homogenous as possible (data points of mostly one label). Intuitively, it is deciding the factors that contribute to class labels being the most different. There are many algorithms to determine the best split, but in this article, I will focus on the Gini Index, which is also the algorithm used in the stock trend classification model. </p>
+<p><img src="https://github.com/user-attachments/assets/d6ffefaa-3aee-400f-a1d6-3cb0750a7f8a" alt="image"></p>
+<p>The Gini Index is a measure of impurity (non-homogeneity of nodes). It ranges from 0 to 1, with 0 representing a pure dataset and 1 representing an impure dataset. A decision tree aims to minimize the gini index at each decision point until it reaches its maximum depth. <br></p>
+<p><img src="https://github.com/user-attachments/assets/c6ad290f-7ae4-4aa3-bd5f-32e6050c415f" alt="image"></p>
+<p>p(j) represents the probability of classifying as a class j, so adding these probabilities and subtracting from 1 give the probability of misclassifying a datapoint when it is randomly assigned to a class. You can extend this to feature selection in a decision tree. If we take appropriate test values (a, b, c, …, z) for features X, Y, Z, we can calculate P(X &#x3D; a), P(X &#x3D; b), …, for each feature and calculate the Gini Impurity for each value. If feature Y has the smallest Gini Impurity, we know that under random selection of a datapoint, it has the smallest chance of misclassification, making it the best feature for the decision tree. </p>
+<p>Another important advantage of using Random Forest over just one decision tree besides having more than one “opinion” on a classification is how each tree is independent to one another because of feature subsetting and bagging. The decorrelation of trees is imperative in terms of avoid overfitting, so the model doesn’t memorize the noise in the data.</p>
+<h3 id="Feature-Subsetting"><a href="#Feature-Subsetting" class="headerlink" title="Feature Subsetting"></a>Feature Subsetting</h3><p>Each tree in the Random Forest gets the full set of features available, but if it just went by the best feature to split by at every node, we would end up with a forest filled with identical decision trees. This isn’t very useful! To address this, Random Forest takes the best feature among a random subset of features while splitting a node. For example, if we had features {RSI, MACD, ADX, Volume} and the sample size of the subset was 2, at split 1, we might get the subset {RSI, ADX} and determine that the best feature to split by is the RSI. At the subsequent split, we take another subset of the original set of features with replacement, {RSI, Volume} and repeat the process. The number of features sampled at each node is denoted by “m” and usually set to the square root of the total number of features n for classification tasks. However, this is a hyperparameter that can be tuned to see what best fits each model. Feature subsetting ensures that each tree is diverse and not dominated by a select few stronger predictors.</p>
+<h3 id="Bagging"><a href="#Bagging" class="headerlink" title="Bagging"></a>Bagging</h3><p>Bagging is used to further decorrelate each tree by taking a random bootstrapped sample of data points to train each tree. Bootstrapping means that the original set of data points is sampled with replacement so each tree may be trained on repeated points. Random Forest avoid overfitting through this means of shuffling the data. </p>
+<p>This raises an important question of how Random Forest can be used with time series data if the training process involves random sampling from the data. Wouldn’t the sequentiality of the data be lost? The answer is yes if you used random forest on raw time series data, sequentiality would be lost and look-ahead bias would be reflected in the results. This is why the original features of the dataset are engineered into lagged features. This way time dependence is encoded into each of the features and offsets the bootstrapping issue.</p>
+<h3 id="Disadvantages-of-Random-Forest"><a href="#Disadvantages-of-Random-Forest" class="headerlink" title="Disadvantages of Random Forest"></a>Disadvantages of Random Forest</h3><p>Random Forest is computationally expensive. The more estimators (number of trees), the longer it takes for the algorithm to run, especially if each tree maintains its max depth. This can potentially be avoided by reducing how deep each tree can go and adjusting the number of estimators, but there’s usually a tradeoff between computation and accuracy.</p>
+<p>Random Forest is also black box. It’s not feasible to see the different branches of each of 100s of decision trees, so a lot of this information isn’t shown in detail while working with the Random Forest model. This makes it harder to tune and adjust the model. However, feature importance scores give more insight into the features that contributed the most to the algorithm’s accuracy.</p>
+<p>Now that we’ve covered the basics of how Random Forest works, I can discuss the specifics of this implementation.</p>
+<h2 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h2><p>The dataset used to train and test the model was sourced from Python’s YFinance library with historical and most recent data on open, high, low, close, volume, and adjusted close prices for the S&amp;P500 index to capture patterns consistent with the top 500 traded stocks in the United States. This included 9909 rows and 7 columns. </p>
+<p>The training data is labeled with a 5-day lagged close price to simulate conditions for the moderately active home investor. If P(i) represents the most recent close on the i-th day then:</p>
+<p>P(i) - P([i-5]) &gt; 0 &#x3D;&gt; label -&gt; 1 indicates that the price has increased within the past 5 days. <br><br>P(i) - P([i-5]) &lt;&#x3D; 0 &#x3D;&gt; label -&gt; 0 indicates that the price has decreased within the past 5 days.</p>
+<p>Using this 5-day lag also helps the model filter out noise in the data that occurs from a 1-day lag close price.</p>
+<p>The engineered features in consideration are several different indicators such as RSI, MACD, ADX, SMAs, and Bollinger Bands. The main algorithm used was Random Forest, which is one of the industry standards for classification in terms of accuracy and prevention of overfitting. This project makes use of many different data science skills such as wrangling and pre-processing, feature engineering, data exploration through plots and correlation matrices, and model analysis using metrics such as accuracy, precision, specificity, sensitivity, ROC curve, f1-score, and K-Fold cross-validation. </p>
+<h2 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h2><h3 id="Simple-Moving-Average-Bollinger-Bands"><a href="#Simple-Moving-Average-Bollinger-Bands" class="headerlink" title="Simple Moving Average &amp; Bollinger Bands"></a>Simple Moving Average &amp; Bollinger Bands</h3><p>The Simple Moving Average (SMA) is calculated with the formula (n is typically 14): </p>
+<p><img src="https://github.com/user-attachments/assets/8e575462-b063-45da-b699-f826593cef35" alt="image"></p>
+<p>Where p(i) indicates the close-price on the i-th day of the n-day period.<br>This indicates the averaged price movement of a stock and it’s particularly useful as a measure of central tendency. For instance, with the SMA, a Bollinger band can be created to mark out the approximate trading range of a stock’s prices. By taking 2 standard deviations above and below the SMA, a region of price variety is created, and a stock price that travels outside of the region – above the upper boundary of the Bollinger band or below the lower boundary of the Bollinger band – indicates an unusual fluctuation that can signal that it’s due for a correction that brings the price back up or down. </p>
+<h3 id="RSI"><a href="#RSI" class="headerlink" title="RSI"></a>RSI</h3><p>The RSI or the relative strength index is a momentum indicator that is calculated with the formula: <br></p>
+<p><img src="https://github.com/user-attachments/assets/4c62e65e-50d9-4a07-bfcb-9eeee716e8a0" alt="image"></p>
+<p>The average gain and loss are calculated over an n-day period, where n is usually 14 days.<br>The concept behind the RSI is that every stock has a trading range, and when a stock price reaches the bottom of its range, there will be a support force that pushes the stock price back. Contrarily, when the stock price reaches the top of its range, there’s a resistance force that pulls the stock price back down. The resistance level and support level of a stock’s trading range are measured by an RSI index of either 70 and 30 or 80 and 20 respectively. If a stock price touches the 70&#x2F;80 mark, it indicates that the stock is overbought, and market forces will naturally bring the stock back down (trend reversal). If a stock price touches the 30&#x2F;20 mark, it indicates that the stock is oversold, and market forces will naturally bring the stock back up. In other words, the RSI measures the likelihood of a trend reversal in context of the stock’s current price momentum. </p>
+<p>Instead of using static values such as 70&#x2F;30 or 80&#x2F;20, using a z-score for the RSI with rolling means and rolling standard deviations creates dynamic markers for when a stock price is oversold&#x2F;overbought.</p>
+<h3 id="MACD"><a href="#MACD" class="headerlink" title="MACD"></a>MACD</h3><p>MACD or the Moving Average Convergence Divergence Oscillator is another popular indicator used in technical analysis of the stock market. Essentially, it measures the momentum (the speed and direction) of price movements. The MACD indicator has two parts: the MACD and the signal.<br>The MACD value is calculated by subtracting the 12-Period and 26-Period EMA (exponential moving average) of the historical close prices. The former is a short-term moving average, and the latter is a long-term moving average, so the difference of the two provides more insight on the direction of the market. The exponential moving average is like the simple moving average, but it places more weight on the more recent data points in the timeseries data. </p>
+<p>MACD &#x3D; EMA (12) – EMA (26)</p>
+<p><img src="https://github.com/user-attachments/assets/e5e90025-97e5-4146-89f9-f9b4784315e6" alt="image"></p>
+<p>The signal value is the 9-Period simple-moving average of the MACD line, and it’s used as a standard of comparison for the MACD. </p>
+<p>The main points of interest with the MACD indicator are crossover points, where the MACD and Signal lines cross over each other, as well as the magnitude of the momentum at those points. Generally, when the MACD line is above the Signal line, this is a buy signal, and when the MACD line is below the Signal line, this is a sell signal. </p>
+<h3 id="ADX-DMI-DMI-DI"><a href="#ADX-DMI-DMI-DI" class="headerlink" title="ADX, DMI+, DMI-, DI"></a>ADX, DMI+, DMI-, DI</h3><p>Some indicators that are used in conjunction with MACD are the average directional index (ADX), directional movement index plus and directional movement index minus. ADX identifies the existence of a stock trend, however it only provides the magnitude of the strength of a trend and not the direction. The directional movement (positive line DMI+) and directional movement (negative line DMI-) provide information about the direction of the trend. The overall directional index (DI) is calculated by taking the difference between the DMI+ and DMI-. When the DMI+ is above DMI-, the price is moving up. Conversely, when the DMI+ is below the DMI-, the price is moving down.<br>The ADX can be evaluated with these notions: </p>
+<ul>
+<li>0-20	Absent or Weak Trend</li>
+<li>25-50	Strong Trend</li>
+<li>50-75	Very Strong Trend</li>
+<li>75-100	Extremely Strong Trend</li>
+</ul>
+<p>For example, a positive directional index (DMI+ &gt; DMI-) and an ADX value of 45 indicates a strong uptrend. A negative directional index (DMI+ &lt; DMI-) and an ADX value of 15 indicates a weak downtrend.<br>In this stock trend classification, the ADX and directional index are represented in one feature by multiplying the ADX by -1 if the directional index is negative (the DMI+ &lt; DMI-); the ADX is kept positive if the directional index is positive (the DMI+ &gt; DMI-). </p>
+<h2 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h2><h3 id="Confusion-Matrix"><a href="#Confusion-Matrix" class="headerlink" title="Confusion Matrix"></a>Confusion Matrix</h3><p>Confusion matrices summarize the performance of a classification algorithm by showing the outcomes of predicting each class. In this situation, the positive class is an uptrend (indicating a stock is predicted to rise). The negative class is a downtrend (indicating a stock is predicted to fall). </p>
+<ul>
+<li><p>True Negatives &#x3D; This is the number of correct downtrend predictions, where the algorithm correctly identified that the stock price would fall. (741)</p>
+</li>
+<li><p>True Positives &#x3D; This is the number of correct uptrend predictions, where the algorithm correctly identified that the stock price would rise. (936)</p>
+</li>
+<li><p>False Positives &#x3D; This is the number of incorrect uptrend predictions. (112)</p>
+</li>
+<li><p>False Negatives &#x3D; This is the number of incorrect downtrend predictions. (184)</p>
+</li>
+</ul>
+<p><img src="https://github.com/user-attachments/assets/39691d77-789e-4822-acf4-4fd074375f97" alt="image"></p>
+<h3 id="Accuracy-F1-Score-Precision-and-Recall"><a href="#Accuracy-F1-Score-Precision-and-Recall" class="headerlink" title="Accuracy, F1-Score, Precision, and Recall"></a>Accuracy, F1-Score, Precision, and Recall</h3><p>The results of the Random Forest model’s performance were evaluated using accuracy, f1-score, precision, and recall. These are directly calculated from the outcomes of the confusion matrix above.</p>
+<p><img src="https://github.com/user-attachments/assets/9d8aae84-e9a6-41b7-b9b7-8f0f2aa84407" alt="image"></p>
+<h3 id="Cross-Validation-and-Hyperparameter-Tuning"><a href="#Cross-Validation-and-Hyperparameter-Tuning" class="headerlink" title="Cross-Validation and Hyperparameter Tuning"></a>Cross-Validation and Hyperparameter Tuning</h3><p>The cv (Cross-Validation) score is also considered, which indicates a mean accuracy of 86.4% indicating that there likely isn’t much overfitting. However, we can try to increase this score further through hyperparameter tuning using gridsearchCV, specifically with the number of estimators (number of trees) and the maximum amount of features to select from at each split. </p>
+<p>For the number of estimators, the best number of estimators is 880 estimators. However, this specific finding doesn’t change the cv score by a signficant amount. </p>
+<p><img src="https://github.com/user-attachments/assets/f35d4035-73fe-4661-a07a-792f8d1392ca" alt="image"></p>
+<p>For the number of max features, the best parameter is found to be 8 features. This means that at every split, a subset of 8 features should be taken. </p>
+<p><img src="https://github.com/user-attachments/assets/d1dfc06a-bcb8-46c3-a455-e17faa4ffea4" alt="image"></p>
+<p>Re-fitting the model with the tuned parameters (880 estimators and max features of 8) gives a new cv score of 86.7%, a 0.3% from the original cv score of 86.4. This different isn’t very significant, so the time trade-off that would be required for training the random forest with 880 estimators isn’t worth the small increase in cv. </p>
+<h3 id="Feature-Importances"><a href="#Feature-Importances" class="headerlink" title="Feature Importances"></a>Feature Importances</h3><p>The feature importances reveal that RSI Z-Score, Z-Score, RSI, and ADX contributed the most to the model’s accuracy, while Bollinger Bands lower bound, SMA, and Bollinger Bands upper bound contributed the least. This also means that the most prominent features reduced the Gini Index (promoted node purity) relatively more than the other features. </p>
+<p align="middle">
+  <img src="https://github.com/user-attachments/assets/d41328fd-ce1c-48ce-a9c2-e0eed87a00d2">
+  <img src="https://github.com/user-attachments/assets/5a853d97-e6d6-404c-8584-5335ae0a9ed0" width="600px">
+</p>
+
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>The overall performance of the Random Forest Classification is ideal with a cv score of about 82.5%. Compared to other algorithmic models such as Support Vector Machines that can reach accuracies of up to 90%, Random Forest performs adequately well considering that it’s highly interpetable and takes less time to train. </p>
+<p>As the model was trained on S&amp;P500 data, the feature importance reflects that RSI and ADX features are highly indicative of stock market patterns and trends when generalized to a diverse range of stocks from different sectors. This makes intuitive sense because RSI is primarily a momentum indicator, providing information on the direction and extent of price movement, and ADX provides information on the quantified strength of a trend in any direction. In practice, these two indicators are often used in conjunction to verify potentially true signals or identify false signals. However, it is surprising that MACD features didn’t contribute more to the overall accuracy of the model considering its popularity as a technical indicator. With even more nuanced feature engineering, these results could definitely evolve and better the model’s performance.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hpmavani.github.io/repository/2025/04/01/Stock-Trend-Classification-with-Random-Forest/" data-id="cmbfohd4k0001s8lrb7lyfns6" data-title="Stock Trend Classification with Random Forest" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/repository/archives/2025/04/">April 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/repository/2025/04/16/EDA/">EDA</a>
+          </li>
+        
+          <li>
+            <a href="/repository/2025/04/15/Outfit-Styling-with-Neural-Networks/">Outfit Styling with Neural Networks</a>
+          </li>
+        
+          <li>
+            <a href="/repository/2025/04/01/Stock-Trend-Classification-with-Random-Forest/">Stock Trend Classification with Random Forest</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Hiya Mavani<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/repository/" class="mobile-nav-link">Home</a>
+  
+    <a href="/repository/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/repository/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/repository/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/repository/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

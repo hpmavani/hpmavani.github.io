@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>EDA | Hiya Mavani Programming Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Polyvore DatasetThe Polyvore Dataset’s training data is contained in “data&#x2F;train_no_dup.json”; It is a json file that contains x outfits with each outfit containing about 7-8 outfit items.  Each">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EDA">
+<meta property="og:url" content="https://hpmavani.github.io/repository/2025/04/16/EDA/index.html">
+<meta property="og:site_name" content="Hiya Mavani Programming Portfolio">
+<meta property="og:description" content="Polyvore DatasetThe Polyvore Dataset’s training data is contained in “data&#x2F;train_no_dup.json”; It is a json file that contains x outfits with each outfit containing about 7-8 outfit items.  Each">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/user-attachments/assets/0fe029a0-a218-4ccf-bf40-016195222ad2">
+<meta property="og:image" content="https://github.com/user-attachments/assets/7eabe561-5b10-4d8b-9b3f-b812343cb741">
+<meta property="og:image" content="https://github.com/user-attachments/assets/e2466fa0-7921-4098-a364-7a2cbe630961">
+<meta property="og:image" content="https://github.com/user-attachments/assets/fe9e846a-fa7d-4bb2-9bb4-91888e6f45d9">
+<meta property="og:image" content="https://github.com/user-attachments/assets/1ee30154-1aeb-4652-85ad-158d1a1f6835">
+<meta property="og:image" content="https://github.com/user-attachments/assets/cf012d7e-6cbd-4e3f-becd-af3319999a67">
+<meta property="og:image" content="https://github.com/user-attachments/assets/f2adb674-8de4-4c2a-b8f6-7f71101ae72e">
+<meta property="article:published_time" content="2025-04-16T04:21:38.000Z">
+<meta property="article:modified_time" content="2025-04-17T05:08:30.150Z">
+<meta property="article:author" content="Hiya Mavani">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/user-attachments/assets/0fe029a0-a218-4ccf-bf40-016195222ad2">
+  
+    <link rel="alternate" href="/repository/atom.xml" title="Hiya Mavani Programming Portfolio" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/repository/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/repository/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/repository/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/repository/" id="logo">Hiya Mavani Programming Portfolio</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/repository/" id="subtitle">CS &amp; DS Learning Journey</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/repository/">Home</a>
+        
+          <a class="main-nav-link" href="/repository/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/repository/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hpmavani.github.io/repository"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-EDA" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/repository/2025/04/16/EDA/" class="article-date">
+  <time class="dt-published" datetime="2025-04-16T04:21:38.000Z" itemprop="datePublished">2025-04-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      EDA
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Polyvore-Dataset"><a href="#Polyvore-Dataset" class="headerlink" title="Polyvore Dataset"></a>Polyvore Dataset</h2><p>The Polyvore Dataset’s training data is contained in “data&#x2F;train_no_dup.json”; It is a json file that contains x outfits with each outfit containing about 7-8 outfit items. </p>
+<p>Each outfit item has a name that contains a description of the item, a price, and the category ID which helps to map the item to a generic category of clothing or accessory type. For purpose of understanding the data, we will mainly look at these item name&#x2F;descriptions and category IDs.</p>
+<img src = "https://github.com/hpmavani/hpmavani.github.io/blob/main/images/Json-Ex.png?raw=true" style = "width: 75%">
+
+<p>For this type of data, pandas multi-indexing will help to maintain the hierarchical nature between outfits and outfit items: </p>
+<p><code>code</code> </p>
+<pre><code>import pandas as pd
+import numpy as np
+import json
+pd.options.mode.chained_assignment = None
+with open(&#39;data/train_no_dup.json&#39;) as file: 
+    data = json.load(file)
+
+iterables = []
+item_prices = []
+item_names = [] 
+item_catids = []
+
+for index, d in enumerate(data): 
+    items = [i for i in d[&quot;items&quot;]]
+    
+    for i_index, i in enumerate(items): 
+        iterables.append([index, i_index])
+        item_names.append(i[&quot;name&quot;])
+        item_prices.append(i[&quot;price&quot;])
+        item_catids.append(i[&quot;categoryid&quot;])
+
+multindex = pd.DataFrame(iterables, columns=[&quot;outfit_index&quot;, &quot;item_index&quot;])
+index = pd.MultiIndex.from_frame(multindex)
+
+df = pd.DataFrame(&#123;&quot;item_name&quot;: item_names, &quot;item_price&quot;: item_prices, &quot;item_catid&quot;: item_catids&#125;, index=index)
+
+df.head(25)
+</code></pre>
+<img src = "https://github.com/hpmavani/hpmavani.github.io/blob/main/images/df1.png?raw=true" style = "width: 75%">
+
+<h2 id="Generating-a-Word-Cloud-of-Outfit-Items"><a href="#Generating-a-Word-Cloud-of-Outfit-Items" class="headerlink" title="Generating a Word Cloud of Outfit Items"></a>Generating a Word Cloud of Outfit Items</h2><p>A word cloud is a tool that gives a qualitative idea of the most frequent words found in the data. </p>
+<p>Before we generate a word cloud, the outfit items must be preprocessed to remove any empty strings or irrelevant words in the item descriptions. All words are made lowercase and punctuation is also removed. </p>
+<p><code>code</code></p>
+<pre><code>import re 
+from wordcloud import STOPWORDS
+stopwords = set(STOPWORDS)
+text = &#39; &#39;.join(df[&#39;item_name&#39;].astype(str).tolist())
+text = re.sub(r&quot;[^A-Za-z\s]&quot;, &#39;&#39;, text)
+text = text.lower() 
+text = &#39; &#39;.join(word for word in text.split() if word not in stopwords)
+df.replace([&quot;&quot;, &quot; &quot;, &quot;...&quot;, &quot;Polyvore&quot;, &#39;&#39;], np.nan, inplace=True)
+df[&quot;item_name&quot;] = df[&quot;item_name&quot;].str.lower()
+df[&quot;item_name&quot;] = df[&quot;item_name&quot;].str.replace(&quot;t shirt&quot;, &quot;t-shirt&quot;)
+df[&quot;item_name&quot;] = df[&quot;item_name&quot;].str.replace(r&quot;[^A-Za-z\s\-]&quot;, &quot;&quot;, regex=True)
+df = df.dropna()
+df[df[&quot;item_name&quot;] == &quot;&quot;][&quot;item_name&quot;] = np.nan
+</code></pre>
+<p><code>code</code></p>
+<pre><code>from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+
+wordcloud = WordCloud(width=800, height=400, background_color=&#39;white&#39;).generate(text)
+
+plt.figure(figsize=(10, 5))
+plt.imshow(wordcloud, interpolation=&#39;bilinear&#39;)
+plt.axis(&#39;off&#39;)
+plt.title(&#39;Item Names Word Cloud&#39;)
+plt.show()
+</code></pre>
+<p><img src="https://github.com/user-attachments/assets/0fe029a0-a218-4ccf-bf40-016195222ad2" alt="image"></p>
+<br>
+
+<p>At glance, the most common words are women, black, shoulder bag, white, and ankle boot. The most common colors seem to be black, white, brown, silver, and gold. This implies that the training data lacks data on more vibrant clothing.</p>
+<p>There’s also a lot of brand names: dolce gabbana, micheal kors, saint laurent, miu miu, and jimmy choo. This reflects that the Polyvore dataset consists of higher-end products. </p>
+<h2 id="Distribution-of-Items-Across-CategoryID"><a href="#Distribution-of-Items-Across-CategoryID" class="headerlink" title="Distribution of Items Across CategoryID"></a>Distribution of Items Across CategoryID</h2><h2 id="Co-Occurence-Matrix-Analysis"><a href="#Co-Occurence-Matrix-Analysis" class="headerlink" title="Co-Occurence Matrix Analysis"></a>Co-Occurence Matrix Analysis</h2><p>A co-occurence matrix is basically a frequency table, but the rows and columns contain the same features. In NLP, this matrix is used to calculate how often pairs of words show up together, which offer insight into the similarity between words. </p>
+<p>For this specific application, we use co-occurence matrices to see how often two words show up together in an outfit. For example, how often do we see the word “black” and “gold” in one outfit? This could indicate that since black and gold are compatible colors, they show up together often. </p>
+<p>This helps to gain insight on word relationships across outfits, and we will analyze this more closely in terms of colors, fabrics, and patterns that co-occur in the training data. </p>
+<p>To accomplish this, we will follow these steps: </p>
+<ol>
+<li>Randomly sample n outfits from the training dataset</li>
+<li>Create a vocab set that contains all words found in clothing item names.</li>
+<li>Find the cartesian product of the outfit items</li>
+<li>Loop through the pairs and increment the location (i, j) and (j, i) respective to the pair of items by 1.</li>
+</ol>
+<p>Once we have a general co-occurence matrix of the entire vocab set, we can subset this dataframe to find specific patterns in terms of colors, fabrics, and patterns.</p>
+<p>For this, I have created 3 text files with an exhaustive list of colors, fabrics, and patterns which can be used filter the dataset and generate new co-occurence matrices. </p>
+<p>The code for each of these parts is below: </p>
+<h3 id="1-Random-Sampling-of-Outfits"><a href="#1-Random-Sampling-of-Outfits" class="headerlink" title="1. Random Sampling of Outfits"></a>1. Random Sampling of Outfits</h3><p><code>code</code></p>
+<pre><code>import random 
+random.seed(42)
+num_outfits = 17315
+random_ints = random.sample(range(num_outfits), k = 100)
+outfit = df.loc[random_ints]
+</code></pre>
+<h3 id="2-Vocabulary-Set"><a href="#2-Vocabulary-Set" class="headerlink" title="2. Vocabulary Set"></a>2. Vocabulary Set</h3><p><code>code</code></p>
+<pre><code>import itertools
+outfit_vocab = list(outfit[&quot;tokenized_item&quot;])
+items_list = set(sorted(list(itertools.chain(*outfit_vocab))))
+</code></pre>
+<h3 id="3-Cartesian-Product-of-Outfit-Items"><a href="#3-Cartesian-Product-of-Outfit-Items" class="headerlink" title="3. Cartesian Product of Outfit Items"></a>3. Cartesian Product of Outfit Items</h3><p><code>code</code></p>
+<pre><code># Create a list of lists where each nested list contains combination of clothing items
+# e.g., [[&#39;victoria&#39;, &#39;velvet&#39;, &#39;gown&#39;], [&#39;rosie&#39;, &#39;long&#39;, &#39;a-line&#39;, &#39;coat&#39;]]
+
+item_product = []
+for i in outfit_vocab: 
+    for j in outfit_vocab: 
+        if i != j: 
+            item_product.append([i, j])
+
+# We want to further expand this to pairs of words in those item descriptions
+
+pairs = []
+
+for item_combo in item_product: 
+    for element in itertools.product(*item_combo): 
+        pairs.append(element)
+
+# &quot;Pairs&quot; will have tuples that look like this: 
+# [(&#39;victoria&#39;, &#39;rosie&#39;),
+    (&#39;victoria&#39;, &#39;long&#39;),
+    (&#39;victoria&#39;, &#39;a-line&#39;),
+    (&#39;victoria&#39;, &#39;coat&#39;),
+    (&#39;velvet&#39;, &#39;rosie&#39;),
+    (&#39;velvet&#39;, &#39;long&#39;),
+    (&#39;velvet&#39;, &#39;a-line&#39;),
+    (&#39;velvet&#39;, &#39;coat&#39;),
+    (&#39;gown&#39;, &#39;rosie&#39;),
+    (&#39;gown&#39;, &#39;long&#39;),
+    (&#39;gown&#39;, &#39;a-line&#39;),
+    (&#39;gown&#39;, &#39;coat&#39;)...]
+</code></pre>
+<h3 id="4-Creating-the-co-occurrence-matrix-by-incrementing-frequencies"><a href="#4-Creating-the-co-occurrence-matrix-by-incrementing-frequencies" class="headerlink" title="4. Creating the co-occurrence matrix by incrementing frequencies"></a>4. Creating the co-occurrence matrix by incrementing frequencies</h3><p><code>code</code></p>
+<pre><code># Create a mapping from items to a matrix index
+item_indices = &#123;item: i for i, item in enumerate(items_list)&#125;
+
+# initialize matrix
+matrix = np.zeros((len(items_list), len(items_list)), dtype=int)
+
+for item1, item2 in pairs: 
+    matrix[item_indices[item1], item_indices[item2]] += 1
+    matrix[item_indices[item2], item_indices[item1]] += 1
+
+cooc_mat = pd.DataFrame(matrix)
+</code></pre>
+<p>After we have this co-occurence matrix of item-pair frequencies, we can extract the rows and columns that are colors, fabrics, and patterns to see the relationships between these categories – how often two colors, fabrics, or patterns occur together in an outfit.</p>
+<h3 id="Color-Analysis"><a href="#Color-Analysis" class="headerlink" title="Color Analysis"></a>Color Analysis</h3><p>A colors.txt file contains a list of colors that covers most of the colors found in the data set. We read this file into a python set and then loop through the cooc_mat columns, subsetting the columns that occur in the colors set. This new matrix is then normalized by dividing each cell by a row total. These normalized values give better insight into the distribution of the occurences of other colors given that row’s color. This is the basic idea of a frequency table and builds off of the idea of conditional probability. </p>
+<p>To visualize these relationships better, we can view them in a heatmap. The differing cell colors for each row indicate that there is a correlation between colors and their likelihood of co-occuring. </p>
+<p><img src="https://github.com/user-attachments/assets/7eabe561-5b10-4d8b-9b3f-b812343cb741" alt="image"></p>
+<p><code>code</code></p>
+<pre><code>import seaborn as sns
+import matplotlib.pyplot as plt
+
+mat_colors = [i for i in cooc_mat.columns if i in colors]
+colors_mat = cooc_mat.loc[mat_colors,mat_colors]
+normalized_colors_mat = colors_mat.div(colors_mat.sum(axis=1), axis=0)
+
+
+plt.figure(figsize = (10, 5))
+sns.heatmap(normalized_colors_mat, annot=False, cmap=&quot;Blues&quot;, fmt=&quot;.2f&quot;, linewidths=0.5)
+plt.title(&quot;Color Co-Occurence Matrix Heatmap&quot;)
+plt.show()
+</code></pre>
+<p>We can also use an unsupervised technique called PCA to better understand how different colors cluster together when reduced to lower dimensions. PCA is a dimensionality reduction technique. Learn more here. </p>
+<p><img src="https://github.com/user-attachments/assets/e2466fa0-7921-4098-a364-7a2cbe630961" alt="image"></p>
+<p><code>code</code><br>    from sklearn.decomposition import PCA<br>    import matplotlib.pyplot as plt</p>
+<pre><code>pca = PCA(n_components=2)
+reduced = pca.fit_transform(normalized_colors_mat)  # Same length as your data
+colors_legend = plt.cm.tab10(np.linspace(0, 1, len(mat_colors)))
+
+# Create a color map for categories
+cat_color_map = &#123;cat: color for cat, color in zip(mat_colors, colors_legend)&#125;
+point_colors = [cat_color_map[cat] for cat in mat_colors]
+
+plt.scatter(reduced[:, 0], reduced[:, 1], c=point_colors)
+
+for cat in mat_colors: 
+    plt.scatter([], [], c=cat_color_map[cat], label=cat)
+    
+plt.legend(title = &quot;Colors&quot;, fontsize = &quot;x-small&quot;, loc = &quot;lower left&quot;)
+plt.xlabel(&quot;PCA 1&quot;)
+plt.ylabel(&quot;PCA 2&quot;)
+plt.title(&quot;PCA of Colors&quot;)
+plt.show()
+</code></pre>
+<h3 id="Fabric-Texture-Analysis"><a href="#Fabric-Texture-Analysis" class="headerlink" title="Fabric&#x2F;Texture Analysis"></a>Fabric&#x2F;Texture Analysis</h3><p><img src="https://github.com/user-attachments/assets/fe9e846a-fa7d-4bb2-9bb4-91888e6f45d9" alt="image"></p>
+<p><code>code</code><br>    mat_fabrics &#x3D; [i for i in cooc_mat.columns if i in fabrics]<br>    fabrics_mat &#x3D; cooc_mat.loc[mat_fabrics, mat_fabrics]<br>    normalized_fabrics_mat &#x3D; fabrics_mat.div(fabrics_mat.sum(axis&#x3D;1), axis&#x3D;0)<br>    plt.figure(figsize &#x3D; (10, 5))<br>    sns.heatmap(normalized_fabrics_mat, annot&#x3D;False, cmap&#x3D;”Blues”, fmt&#x3D;”.2f”, linewidths&#x3D;0.5)<br>    plt.title(“Fabric Co-Occurence Matrix Heatmap”)<br>    plt.show()</p>
+<p><img src="https://github.com/user-attachments/assets/1ee30154-1aeb-4652-85ad-158d1a1f6835" alt="image"></p>
+<p><code>code</code></p>
+<pre><code>pca = PCA(n_components=2)
+reduced = pca.fit_transform(normalized_fabrics_mat)  # Same length as your data
+colors_legend = plt.cm.tab10(np.linspace(0, 1, len(mat_fabrics)))
+
+# Create a color map for categories
+cat_color_map = &#123;cat: color for cat, color in zip(mat_fabrics, colors_legend)&#125;
+point_colors = [cat_color_map[cat] for cat in mat_fabrics]
+
+plt.scatter(reduced[:, 0], reduced[:, 1], c=point_colors)
+
+for cat in mat_fabrics: 
+    plt.scatter([], [], c=cat_color_map[cat], label=cat)
+    
+plt.legend(title = &quot;Fabrics&quot;, fontsize = &quot;x-small&quot;, loc = &quot;lower left&quot;)
+plt.xlabel(&quot;PCA 1&quot;)
+plt.ylabel(&quot;PCA 2&quot;)
+plt.title(&quot;PCA of Fabrics&quot;)
+plt.show()
+</code></pre>
+<h3 id="Patterns-Analysis"><a href="#Patterns-Analysis" class="headerlink" title="Patterns Analysis"></a>Patterns Analysis</h3><p><img src="https://github.com/user-attachments/assets/cf012d7e-6cbd-4e3f-becd-af3319999a67" alt="image"></p>
+<p><code>code</code></p>
+<pre><code>mat_patterns = [i for i in cooc_mat.columns if i in patterns]
+patterns_mat = cooc_mat.loc[mat_patterns, mat_patterns]
+normalized_patterns_mat = patterns_mat.div(patterns_mat.sum(axis=1), axis=0)
+plt.figure(figsize = (10, 5))
+sns.heatmap(normalized_patterns_mat, annot=False, cmap=&quot;Blues&quot;, fmt=&quot;.2f&quot;, linewidths=0.5)
+plt.title(&quot;Pattern Co-Occurence Matrix Heatmap&quot;)
+plt.xlabel(&quot;Items&quot;)
+plt.show()
+</code></pre>
+<p><img src="https://github.com/user-attachments/assets/f2adb674-8de4-4c2a-b8f6-7f71101ae72e" alt="image"></p>
+<p><code>code</code></p>
+<pre><code>pca = PCA(n_components=2)
+reduced = pca.fit_transform(normalized_patterns_mat)  # Same length as your data
+colors_legend = plt.cm.tab10(np.linspace(0, 1, len(mat_patterns)))
+
+# Create a color map for categories
+cat_color_map = &#123;cat: color for cat, color in zip(mat_patterns, colors_legend)&#125;
+point_colors = [cat_color_map[cat] for cat in mat_patterns]
+
+plt.scatter(reduced[:, 0], reduced[:, 1], c=point_colors)
+
+for cat in mat_patterns: 
+    plt.scatter([], [], c=cat_color_map[cat], label=cat)
+    
+plt.legend(title = &quot;Patterns&quot;, fontsize = &quot;x-small&quot;, loc = &quot;lower left&quot;)
+plt.xlabel(&quot;PCA 1&quot;)
+plt.ylabel(&quot;PCA 2&quot;)
+plt.title(&quot;PCA of patterns matrix&quot;)
+plt.show()
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hpmavani.github.io/repository/2025/04/16/EDA/" data-id="cmbfohd4h0000s8lr2ljbfwa2" data-title="EDA" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/repository/2025/04/15/Outfit-Styling-with-Neural-Networks/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Outfit Styling with Neural Networks</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/repository/archives/2025/04/">April 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/repository/2025/04/16/EDA/">EDA</a>
+          </li>
+        
+          <li>
+            <a href="/repository/2025/04/15/Outfit-Styling-with-Neural-Networks/">Outfit Styling with Neural Networks</a>
+          </li>
+        
+          <li>
+            <a href="/repository/2025/04/01/Stock-Trend-Classification-with-Random-Forest/">Stock Trend Classification with Random Forest</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Hiya Mavani<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/repository/" class="mobile-nav-link">Home</a>
+  
+    <a href="/repository/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/repository/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/repository/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/repository/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
